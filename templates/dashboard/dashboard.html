@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Tablero de reporte{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Tablero de reporte</h2>
+
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <div class="card border-warning">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">
+                        <i class="bi bi-list-task"></i> Por hacer
+                    </h5>
+                    <p class="card-text display-6">{{ counts.todo }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-info">
+                <div class="card-body">
+                    <h5 class="card-title text-info">
+                        <i class="bi bi-hourglass-split"></i> En progreso
+                    </h5>
+                    <p class="card-text display-6">{{ counts.in_progress }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title text-success">
+                        <i class="bi bi-check-circle"></i> Hecho
+                    </h5>
+                    <p class="card-text display-6">{{ counts.done }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-5">Lista de tareas</h4>
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.title }}
+                <span class="badge
+                    {% if task.status == 'todo' %} bg-warning
+                    {% elif task.status == 'in_progress' %} bg-info
+                    {% elif task.status == 'done' %} bg-success
+                    {% else %} bg-secondary
+                    {% endif %}">
+                    {{ task.get_status_display }}
+                </span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay tareas registradas.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
 from rest_framework.response import Response
-from .services import TaskService
+from tasks.services import TaskService
 from rest_framework import status
 
 
@@ -24,7 +24,7 @@ class DashboardView(APIView):
         }
 
         if request.accepted_renderer.format == 'html':
-            return Response({'counts': counts, 'tasks': tasks}, template_name='dashboard.html')
+            return Response({'counts': counts, 'tasks': tasks}, template_name='dashboard/dashboard.html')
 
         return Response({
             'counts': counts,

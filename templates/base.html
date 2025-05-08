@@ -18,13 +18,21 @@
 <body>
 <div class="container mt-4">
     {% if user.is_authenticated %}
-        <p>
-            Bienvenido, <strong>{{ user.username }} </strong>|
-            <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
-                <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+        <p class="d-flex align-items-center gap-2 flex-wrap">
+            <span class="me-3 fs-5 fw-semibold text-primary">
+                 <i class="bi bi-person-circle me-1"></i> Bienvenido, <strong>{{ user.username }}</strong>
+            </span>
+
+            <a href="{% url 'dashboard' %}" class="btn btn-sm btn-outline-info d-flex align-items-center">
+                <i class="bi bi-speedometer2 me-1"></i> Tablero
             </a>
-            <a href="{% url 'project_list' %}" class="btn btn-outline-primary btn-sm">
-                <i class="bi bi-kanban"></i> Proyectos
+
+            <a href="{% url 'project_list' %}" class="btn btn-sm btn-outline-secondary d-flex align-items-center">
+                <i class="bi bi-folder2-open me-1"></i> Proyectos
+            </a>
+
+            <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-danger d-flex align-items-center">
+                <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
             </a>
         </p>
     {% else %}

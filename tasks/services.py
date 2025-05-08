@@ -30,3 +30,9 @@ class TaskService:
         except Project.DoesNotExist:
             return None
         return Task.objects.filter(project=project)
+
+    def get_tasks_for_user(self):
+        return Task.objects.filter(assigned_to=self.user)
+
+    def count_by_status(self, status):
+        return Task.objects.filter(assigned_to=self.user, status=status).count()
