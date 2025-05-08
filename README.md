@@ -72,6 +72,9 @@ Y además con las clases form se validan los formularios.
 14. Se decide utilizar el sistema de gestión de mensajes de Django para gestionar los mensajes de éxito y error del proyecto.
 15. Se decide utilizar como base de datos el SQLite de Django para facilitar el desarrollo y las pruebas del proyecto ya que no es proyecto real y facilidad para el despliegue.
 16. Utilizar librerías locales en el proyecto para evitar llamadas innecesarias a la red y mejorar el rendimiento.
+17. No se utilizó un archivo de configuración de variables en un archivo .env debido a la sencillez del proyecto y 
+la falta de variables sensibles. Se pudo al menos guardar los datos de conexión a la base de datos en un archivo de configuración,
+pero al usarse SQLite de base de datos no fue necesario.
 
 ### Patrones de diseños aplicados
 
