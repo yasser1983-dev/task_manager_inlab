@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -9,7 +10,7 @@ from .forms_factory import get_task_form  # factory que retorna TaskForm
 from rest_framework import status
 
 
-class TaskListDeleteView(APIView):
+class TaskListDeleteView(LoginRequiredMixin, APIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
 
@@ -47,7 +48,7 @@ class TaskListDeleteView(APIView):
             return redirect('task_list')
         return Response({'detail': 'Tarea eliminada'}, status=status.HTTP_204_NO_CONTENT)
 
-class TaskCreateUpdateView(APIView):
+class TaskCreateUpdateView(LoginRequiredMixin, APIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
 

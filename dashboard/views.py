@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
@@ -6,7 +7,7 @@ from tasks.services import TaskService
 from rest_framework import status
 
 
-class DashboardView(APIView):
+class DashboardView(LoginRequiredMixin, APIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
 

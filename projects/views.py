@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,7 +10,7 @@ from .forms_factory import get_project_form
 from .services import ProjectService
 
 
-class ProjectListCreateView(APIView):
+class ProjectListCreateView(LoginRequiredMixin, APIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
 
@@ -51,7 +52,7 @@ class ProjectListCreateView(APIView):
 
 
 
-class ProjectDeleteView(APIView):
+class ProjectDeleteView(LoginRequiredMixin, APIView):
     permission_classes = [IsAuthenticated]
     renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
 
