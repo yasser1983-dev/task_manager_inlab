@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Proyectos{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Mis Proyectos</h2>
+            <a href="{% url 'project_create' %}" class="btn btn-success">
+                <i class="bi bi-plus-circle me-1"></i> Crear nuevo proyecto
+            </a>
+        </div>
+
+        {% if projects %}
+            <ul class="list-group">
+                {% for project in projects %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ project.name }}</span>
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'task_list' project.pk %}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-card-list"></i> Ver listado de tareas
+                            </a>
+
+                            <a href="{% url 'task_create' project.pk %}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-plus-circle"></i> Crear tarea
+                            </a>
+                            <a href="{% url 'project_delete' project.pk %}" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                No tienes proyectos aún. ¡Crea uno nuevo!
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

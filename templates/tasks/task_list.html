@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Tareas{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Mis tareas</h5>
+        <a href="{% url 'task_create' project_id=project_id%}" class="btn btn-sm btn-success">
+            <i class="bi bi-plus-circle"></i> Nueva Tarea
+        </a>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.title }}
+                <div>
+                    <a href="{% url 'task_edit' project_id=project_id task_id=task.id  %}" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+{#                    <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">#}
+{#                        <i class="bi bi-trash"></i>#}
+{#                    </a>#}
+                </div>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay tareas registradas.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

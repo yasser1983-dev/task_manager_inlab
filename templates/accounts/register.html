@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Registro de Usuario{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="mb-4 text-center">Crear una cuenta</h2>
+          <form method="post" id="registerForm" novalidate>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+              <label for="id_username" class="form-label">Usuario</label>
+              {{ form.username}}
+              <div class="invalid-feedback d-block">
+                {{ form.username.errors|striptags }}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="id_email" class="form-label">Email</label>
+              {{ form.email|add_class:"form-control" }}
+              <div class="invalid-feedback d-block">
+                {{ form.email.errors|striptags }}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="id_password1" class="form-label">Contraseña</label>
+              {{ form.password1|add_class:"form-control" }}
+              <div class="invalid-feedback d-block">
+                {{ form.password1.errors|striptags }}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="id_password2" class="form-label">Confirmar contraseña</label>
+              {{ form.password2|add_class:"form-control" }}
+              <div class="invalid-feedback d-block">
+                {{ form.password2.errors|striptags }}
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    validateFormById('registerForm');
+  </script>
+{% endblock %}
