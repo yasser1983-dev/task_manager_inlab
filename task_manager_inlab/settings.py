@@ -32,7 +32,11 @@ SECRET_KEY = 'django-insecure-8+m$b+&rm66*3k8_8i1#b)3sf$r!pk+!=f@bhoiqke@9uz%@o*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'task-manager-inlab.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
