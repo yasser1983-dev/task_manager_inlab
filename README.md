@@ -166,4 +166,9 @@ El servidor no sabrá dónde están los estáticos si no han sido recopilados.
 ### Consultar proyecto desplegado en producciòn
 El proyecto está desplegado en un servidor de producción y se puede acceder a través de la siguiente URL:
 [http://task-manager-inlab.onrender.com](http://task-manager-inlab.onrender.com)
+
+Se puede utilizar la cuenta de usuario y contraseña o registar una nueva cuenta: 
+```bash
+  usuario: user1
+  contraseña: qw
 ```
