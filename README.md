@@ -162,3 +162,8 @@ Además es necesario mandar ejecutar el siguiente comando:
 ```
 En producción, la variable DEBUG=False desactiva el servidor interno de archivos estáticos.
 El servidor no sabrá dónde están los estáticos si no han sido recopilados.
+
+### Consultar proyecto desplegado en producciòn
+El proyecto está desplegado en un servidor de producción y se puede acceder a través de la siguiente URL:
+[http://task-manager-inlab.onrender.com](http://task-manager-inlab.onrender.com)
+```
