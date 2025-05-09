@@ -147,3 +147,18 @@ pero al usarse SQLite de base de datos no fue necesario.
     ```bash
     python manage.py runserver
     ```
+### Desplegar en producción
+
+Para desplegar en producción, se recomienda utilizar un servidor web como Gunicorn, por eso está instalada la librería gunicorn.
+
+Se requiere registrar en el settings.py el dominio o IP del servidor en la variable ALLOWED_HOSTS.
+
+```python   
+ALLOWED_HOSTS = ['tu_dominio.com', 'IP_del_servidor']
+```
+Además es necesario mandar ejecutar el siguiente comando:
+```bash
+  python manage.py collectstatic --noinput
+```
+En producción, la variable DEBUG=False desactiva el servidor interno de archivos estáticos.
+El servidor no sabrá dónde están los estáticos si no han sido recopilados.
